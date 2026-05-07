@@ -10,7 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class BookCard extends StatelessWidget {
-  const BookCard({super.key, required this.book, this.onRemove, this.onRefresh});
+  const BookCard({
+    super.key,
+    required this.book,
+    this.onRemove,
+    this.onRefresh,
+  });
   final Product book;
   final VoidCallback? onRemove;
   final VoidCallback? onRefresh;

@@ -99,8 +99,7 @@ class DetailsScreen extends StatelessWidget {
   }
 }
 
-
 // refres Wishlist get/add/remove => (Cache ids as List<int>)
 // check if book is in wishlist => (Cache ids contains book id)
 // toogle UI (add/remove)
-// 
+//

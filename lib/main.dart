@@ -25,7 +25,5 @@ Future<void> main() async {
 // Data : (Repositories(Api Integration) - Models(Request, Response))
 // Presentation : (Cubit - Pages - Widgets)
 
-
-
 // Response (Json) ==> Parse to Model
 // FromJson => NamedConstructor (Json) => Model
