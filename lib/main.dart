@@ -2,13 +2,24 @@ import 'package:bookia/app.dart';
 import 'package:bookia/core/services/apis/dio_provider.dart';
 import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   DioProvider.init();
   await SharedPref.init();
-  runApp(DevicePreview(enabled: false, builder: (context) => const MainApp()));
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => EasyLocalization(
+        supportedLocales: [Locale('en'), Locale('ar')],
+        path: 'assets/translations',
+        child: const MainApp(),
+      ),
+    ),
+  );
 }
 
 // data resources :

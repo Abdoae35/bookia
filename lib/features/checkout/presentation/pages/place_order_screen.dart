@@ -8,7 +8,6 @@ import 'package:bookia/core/widgets/shimmer/shimmer_list_view.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_state.dart';
 import 'package:bookia/features/cart/presentation/widgets/cart_item_widget.dart';
-import 'package:bookia/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
