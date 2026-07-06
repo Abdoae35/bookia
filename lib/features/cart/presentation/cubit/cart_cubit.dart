@@ -35,8 +35,8 @@ class CartCubit extends Cubit<CartState> {
     var item = cartItems.firstWhere((element) => element.itemId == cartItemId);
     cartItems.remove(item);
     if (total != null) {
-      total = (double.tryParse(total!) ?? 0.0 - (item.itemTotal ?? 0.0))
-          .toString();
+      total = ((double.tryParse(total!) ?? 0.0) - (item.itemTotal ?? 0.0))
+          .toStringAsFixed(2);
     }
     emit(CartLoadedState());
     var data = await CartRepo.removeFromCart(cartItemId);
@@ -47,8 +47,8 @@ class CartCubit extends Cubit<CartState> {
     } else {
       cartItems.add(item);
       if (total != null) {
-        total = (double.tryParse(total!) ?? 0.0 + (item.itemTotal ?? 0.0))
-            .toString();
+        total = ((double.tryParse(total!) ?? 0.0) + (item.itemTotal ?? 0.0))
+            .toStringAsFixed(2);
       }
       emit(CartErrorState('Something went Wrong'));
     }

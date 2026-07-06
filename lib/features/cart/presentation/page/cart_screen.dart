@@ -1,4 +1,5 @@
 import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/styles/colors.dart';
 import 'package:bookia/core/styles/text_styles.dart';
 import 'package:bookia/core/widgets/custom_svg_picture.dart';
@@ -10,6 +11,8 @@ import 'package:bookia/features/cart/presentation/widgets/cart_item_widget.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:bookia/core/widgets/main_button.dart';
+import 'package:go_router/go_router.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -21,6 +24,30 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.accentColor,
         title: Text('My Cart'),
+      ),
+      bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          if (state is CartLoadedState) {
+            var cubit = context.read<CartCubit>();
+            if (cubit.cartItems.isNotEmpty) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: MainButton(
+                    text: 'Checkout',
+                    onPressed: () {
+                      context.push(
+                        Routes.placeOrder,
+                        extra: {'total': cubit.total ?? '0', 'cubit': cubit},
+                      );
+                    },
+                  ),
+                ),
+              );
+            }
+          }
+          return const SizedBox.shrink();
+        },
       ),
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {

@@ -22,4 +22,17 @@ class Apis {
   static const String addToCart = '/add-to-cart';
   static const String removeFromCart = '/remove-from-cart';
   static const String updateCart = '/update-cart';
+
+
+  // checkout
+  static const String checkout = '/checkout';
+  static const String placeOrder = '/place-order';
+  static const String orderHistory = '/order-history';
+  static const String showSingleOrder = '/order-history/';
+
+
+
+
+
+
 }
